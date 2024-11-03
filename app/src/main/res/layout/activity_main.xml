@@ -24,12 +24,14 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="Next >"
-        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:backgroundTint="#6C63FF"
         />
 
 
-
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
@@ -37,9 +39,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="14sp"
         android:hint="Enter your email"
-        />
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_mail"
+        app:endIconContentDescription="content_description_end_icon">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
         app:layout_constraintTop_toTopOf="@id/guideline"
@@ -48,19 +60,29 @@
         android:textSize="14sp"
         android:layout_marginTop="25dp"
         android:hint="Password"
-        />
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/ic_lock"
+        app:endIconContentDescription="content_description_end_icon">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_constraintTop_toTopOf="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
     android:layout_marginTop="406dp"
-    app:layout_constraintStart_toStartOf="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
     >
     <CheckBox
         android:layout_width="120dp"
-        android:layout_height="23dp"
+        android:layout_height="48dp"
         app:layout_constraintTop_toTopOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="Remember me"
         android:layout_marginRight="233dp"
         android:textSize="9sp"
