@@ -32,12 +32,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        style="@style/LoginEditBox"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="14sp"
         android:hint="Enter your email"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_mail"
@@ -52,12 +50,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        style="@style/LoginEditBox"
         app:layout_constraintTop_toTopOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="14sp"
         android:layout_marginTop="25dp"
         android:hint="Password"
         app:endIconMode="custom"
