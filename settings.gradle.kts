@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "first assignment"
 include(":app")
+include(":registerscreen")

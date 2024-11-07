@@ -6,4 +6,8 @@
         <item name="android:layout_width">300dp</item>
     </style>
 
+    <style name="RegisterEditBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_width">355dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
 </resources>
