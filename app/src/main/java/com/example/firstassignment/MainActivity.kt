@@ -10,12 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         val registerNow= findViewById<TextView>(R.id.registerNow)
         registerNow.setOnClickListener{
-            Log.d("Onboarding","Register new presses")
+            Log.d("Onboarding","Register now presses")
 
             val goToRegistrationIntent = Intent(this@MainActivity,RegisterScreen::class.java)
             startActivity(goToRegistrationIntent)
