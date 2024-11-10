@@ -19,9 +19,9 @@
         android:orientation="vertical"
         >
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="355dp"
-            android:layout_height="50dp"
+            style="@style/RegisterEditBox"
             android:hint="Full name"
+            app:endIconDrawable="@drawable/ic_user"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -32,10 +32,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="355dp"
-            android:layout_height="50dp"
+            style="@style/RegisterEditBox"
             android:layout_marginTop="15dp"
-            android:hint="Valid email">
+            android:hint="Valid email"
+            app:endIconDrawable="@drawable/ic_mail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -46,10 +46,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="355dp"
-            android:layout_height="50dp"
+            style="@style/RegisterEditBox"
             android:layout_marginTop="15dp"
-            android:hint="Phone number">
+            android:hint="Phone number"
+            app:endIconDrawable="@drawable/ic_phone">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,10 +59,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="355dp"
-            android:layout_height="50dp"
+            style="@style/RegisterEditBox"
             android:layout_marginTop="15dp"
             android:hint="Strong password"
+            app:endIconDrawable="@drawable/ic_lock"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
