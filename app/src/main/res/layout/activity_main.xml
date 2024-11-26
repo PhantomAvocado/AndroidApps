@@ -33,6 +33,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailInput"
         style="@style/LoginEditBox"
         app:layout_constraintBottom_toBottomOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +53,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/LoginEditBox"
+        android:id = "@+id/passwordInputLayout"
         app:layout_constraintTop_toTopOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
