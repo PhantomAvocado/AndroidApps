@@ -10,13 +10,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 
-class MainActivity : AppCompatActivity() {
+class LogInActivity : AppCompatActivity() {
     private lateinit var credentialsManager: CredentialsManager
 
     @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_log_in)
 
         credentialsManager = CredentialsManager()
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         registerNow.setOnClickListener {
             Log.d("Onboarding", "Register now pressed")
 
-            val goToRegistrationIntent = Intent(this@MainActivity, RegisterScreen::class.java)
+            val goToRegistrationIntent = Intent(this@LogInActivity, RegisterScreen::class.java)
             startActivity(goToRegistrationIntent)
         }
 
