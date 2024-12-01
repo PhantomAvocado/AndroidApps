@@ -16,7 +16,7 @@
             android:name=".EmptyMainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LogInActivity"
             android:exported="true"
             android:launchMode="standard">
             <intent-filter>
