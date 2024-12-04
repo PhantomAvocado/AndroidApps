@@ -14,6 +14,8 @@ class CredentialsManager {
                 ")+"
     )
 
+    private val credentials = mutableMapOf<String, String>()
+
     fun isEmailValid(mail: String): Boolean {
         return EMAIL_ADDRESS_PATTERN.matcher(mail).matches() || mail == "test@te.st"
     }
@@ -23,6 +25,18 @@ class CredentialsManager {
     }
 
     fun login(email: String, password: String): Boolean {
+        val normalizedEmail = email.lowercase()
+        return credentials[normalizedEmail] == password
+    }
+
+    fun register(email: String, password: String): String {
+        val normalizedEmail = email.lowercase()
+        return if (credentials.containsKey(normalizedEmail)) {
+            "Error: Email already taken"
+        } else {
+            credentials[normalizedEmail] = password
+            "Registration successful"
+        }
         return email == "test@te.st" && password == "1234"
     }
 }
