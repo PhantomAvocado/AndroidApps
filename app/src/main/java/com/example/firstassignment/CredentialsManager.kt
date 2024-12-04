@@ -37,5 +37,6 @@ class CredentialsManager {
             credentials[normalizedEmail] = password
             "Registration successful"
         }
+        return email == "test@te.st" && password == "1234"
     }
 }

@@ -9,12 +9,15 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+//given proper credentials, create an account
+
 class RegisterScreen : AppCompatActivity() {
     private val credentialsManager = CredentialsManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_screen)
+
 
         val logIn = findViewById<TextView>(R.id.logIn)
         val registerButton = findViewById<Button>(R.id.buttonPanel)
@@ -45,6 +48,8 @@ class RegisterScreen : AppCompatActivity() {
             navigateToLogin()
         } else {
             Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+            val goToLogInIntent = Intent(this,LogInActivity::class.java)
+            startActivity(goToLogInIntent)
         }
     }
 }
