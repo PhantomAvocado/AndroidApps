@@ -1,31 +1,34 @@
 package com.example.firstassignment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputLayout
 
-//given proper credentials, create an account
-
-class RegisterScreen : AppCompatActivity() {
+class RegisterScreen : Fragment() {
     private val credentialsManager = CredentialsManager()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.register_screen)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.register_screen, container, false)
 
-
-        val logIn = findViewById<TextView>(R.id.logIn)
-        val registerButton = findViewById<Button>(R.id.buttonPanel)
-        val emailInput = findViewById<EditText>(R.id.email_input)
-        val passwordInput = findViewById<EditText>(R.id.password_input)
+        val logIn = view.findViewById<TextView>(R.id.logIn)
+        val registerButton = view.findViewById<Button>(R.id.buttonPanel)
+        val emailInput = view.findViewById<EditText>(R.id.email_input)
+        val passwordInput = view.findViewById<EditText>(R.id.password_input)
 
         logIn.setOnClickListener {
-            Log.d("Homework","Pressing the 'log in' text")
+            Log.d("Homework", "Pressing the 'log in' text")
             navigateToLogin()
         }
 
@@ -34,22 +37,22 @@ class RegisterScreen : AppCompatActivity() {
             val password = passwordInput.text.toString()
             registerAccount(email, password)
         }
+
+        return view
     }
 
     private fun navigateToLogin() {
-        val goToLogInIntent = Intent(this, LogInActivity::class.java)
-        startActivity(goToLogInIntent)
+        // Replace with fragment navigation
+        (activity as MainActivity).replaceFragment(LoginActivity())
     }
 
     private fun registerAccount(email: String, password: String) {
         val result = credentialsManager.register(email, password)
         if (result == "Registration successful") {
-            Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
             navigateToLogin()
         } else {
-            Toast.makeText(this, result, Toast.LENGTH_SHORT).show()
-            val goToLogInIntent = Intent(this,LogInActivity::class.java)
-            startActivity(goToLogInIntent)
+            Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
         }
     }
 }

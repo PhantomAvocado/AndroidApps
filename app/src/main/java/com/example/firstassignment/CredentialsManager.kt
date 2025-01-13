@@ -2,7 +2,7 @@ package com.example.firstassignment
 
 import java.util.regex.Pattern
 
-class CredentialsManager {
+class CredentialsManager internal constructor() {
 
     val EMAIL_ADDRESS_PATTERN: Pattern = Pattern.compile(
         "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -15,6 +15,17 @@ class CredentialsManager {
     )
 
     private val credentials = mutableMapOf<String, String>()
+
+    companion object {
+        private var instance: CredentialsManager? = null
+
+        fun getInstance(): CredentialsManager {
+            if (instance == null) {
+                instance = CredentialsManager()
+            }
+            return instance!!
+        }
+    }
 
     fun isEmailValid(mail: String): Boolean {
         return EMAIL_ADDRESS_PATTERN.matcher(mail).matches() || mail == "test@te.st"
@@ -37,6 +48,5 @@ class CredentialsManager {
             credentials[normalizedEmail] = password
             "Registration successful"
         }
-
     }
 }

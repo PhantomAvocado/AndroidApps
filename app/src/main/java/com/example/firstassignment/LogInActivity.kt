@@ -1,35 +1,37 @@
 package com.example.firstassignment
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputLayout
 
-class LogInActivity : AppCompatActivity() {
+class LoginActivity : Fragment() {
     private lateinit var credentialsManager: CredentialsManager
 
-    @SuppressLint("CutPasteId")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.activity_log_in, container, false)
 
-        credentialsManager = CredentialsManager()
+        credentialsManager = CredentialsManager.getInstance()
 
-        val registerNow = findViewById<TextView>(R.id.registerNow)
-        val emailInputLayout = findViewById<TextInputLayout>(R.id.emailInput)
-        val passwordInputLayout = findViewById<TextInputLayout>(R.id.passwordInputLayout)
-        val loginButton = findViewById<Button>(R.id.Next)
+        val registerNow = view.findViewById<TextView>(R.id.registerNow)
+        val emailInputLayout = view.findViewById<TextInputLayout>(R.id.emailInput)
+        val passwordInputLayout = view.findViewById<TextInputLayout>(R.id.passwordInputLayout)
+        val loginButton = view.findViewById<Button>(R.id.Next)
 
         registerNow.setOnClickListener {
             Log.d("Onboarding", "Register now pressed")
-
-            val goToRegistrationIntent = Intent(this@LogInActivity, RegisterScreen::class.java)
-            startActivity(goToRegistrationIntent)
+            // Implement fragment navigation to RegisterFragment
+            (activity as MainActivity).replaceFragment(RegisterScreen())
         }
 
         loginButton.setOnClickListener {
@@ -53,11 +55,8 @@ class LogInActivity : AppCompatActivity() {
 
             login(email, password)
         }
-    }
 
-    private fun goToMainActivity() {
-        val intent = Intent(this, EmptyMainActivity::class.java)
-        startActivity(intent)
+        return view
     }
 
     private fun login(email: String, password: String) {
@@ -66,7 +65,12 @@ class LogInActivity : AppCompatActivity() {
         if (isLoginSuccessful) {
             goToMainActivity()
         } else {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun goToMainActivity() {
+        val intent = Intent(context, EmptyMainActivity::class.java)
+        startActivity(intent)
     }
 }
