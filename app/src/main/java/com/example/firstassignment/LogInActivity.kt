@@ -1,6 +1,5 @@
 package com.example.firstassignment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,9 +9,10 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import com.google.android.material.textfield.TextInputLayout
 
-class LoginActivity : Fragment() {
+class LogInActivity : Fragment() {
     private lateinit var credentialsManager: CredentialsManager
 
     override fun onCreateView(
@@ -30,7 +30,6 @@ class LoginActivity : Fragment() {
 
         registerNow.setOnClickListener {
             Log.d("Onboarding", "Register now pressed")
-            // Implement fragment navigation to RegisterFragment
             (activity as MainActivity).replaceFragment(RegisterScreen())
         }
 
@@ -63,14 +62,16 @@ class LoginActivity : Fragment() {
         val isLoginSuccessful = credentialsManager.login(email, password)
 
         if (isLoginSuccessful) {
-            goToMainActivity()
+            goToRecipeListFragment()
         } else {
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun goToMainActivity() {
-        val intent = Intent(context, EmptyMainActivity::class.java)
-        startActivity(intent)
+    private fun goToRecipeListFragment() {
+        parentFragmentManager.commit {
+            replace(R.id.fragment_container_view, Recipe())
+            addToBackStack(null)
+        }
     }
 }

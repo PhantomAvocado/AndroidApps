@@ -11,14 +11,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer, LoginActivity()).commit()
+            val loginFragment = LogInActivity()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container_view, loginFragment)
+                .commit()
         }
     }
 
     fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, fragment)
+            .replace(R.id.fragment_container_view, fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+    fun showRecipeFragment() {
+        val recipeFragment = Recipe()
+        replaceFragment(recipeFragment)
     }
 }
