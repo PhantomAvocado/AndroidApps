@@ -7,7 +7,7 @@ import org.junit.Test
 
 class CredentialsTest {
 
-    val credentialsManager = CredentialsManager()
+    val credentialsManager = CredentialsManager.getInstance()
 
     // Email tests
     @Test
@@ -20,7 +20,7 @@ class CredentialsTest {
 
     @Test
     fun givenWellFormattedEmail_ReturnTrue() {
-        val email="roma.kot1000@gmail.com"
+        val email = "roma.kot1000@gmail.com"
 
         val result = credentialsManager.isEmailValid(email)
         assertTrue(result)
@@ -28,7 +28,7 @@ class CredentialsTest {
 
     @Test
     fun givenIncorrectlyFormattedEmail_ReturnTrue() {
-        val email="dsabc@das"
+        val email = "dsabc@das"
 
         val result = credentialsManager.isEmailValid(email)
         assertFalse(result)
@@ -37,7 +37,7 @@ class CredentialsTest {
     // Password tests
     @Test
     fun givenEmptyPassword_ReturnFalse() {
-        val password=""
+        val password = ""
         val result = credentialsManager.isPasswordValid(password)
 
         assertFalse(result)
@@ -45,7 +45,7 @@ class CredentialsTest {
 
     @Test
     fun givenWellFormattedPassword_ReturnTrue() {
-        val password="123Tr-_-xx123"
+        val password = "123Tr-_-xx123"
         val result = credentialsManager.isPasswordValid(password)
 
         assertTrue(result)
@@ -53,7 +53,7 @@ class CredentialsTest {
 
     @Test
     fun givenIncorrectlyFormattedPassword_ReturnTrue() {
-        val password="Strongpassword"
+        val password = "Strongpassword"
         val result = credentialsManager.isPasswordValid(password)
 
         assertFalse(result)

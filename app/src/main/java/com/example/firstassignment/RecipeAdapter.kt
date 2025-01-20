@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class RecipeAdapter(private val recipeList: List<RecipeData>) :
+class RecipeAdapter(private var recipeList: List<RecipeData>) :
     RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
@@ -48,5 +48,10 @@ class RecipeAdapter(private val recipeList: List<RecipeData>) :
                 Toast.makeText(itemView.context, "Shared item ID: ${recipe.id}", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun updateRecipes(newRecipes: List<RecipeData>) {
+        recipeList = newRecipes
+        notifyDataSetChanged()
     }
 }

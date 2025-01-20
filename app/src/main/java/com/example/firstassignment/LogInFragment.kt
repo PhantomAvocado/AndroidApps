@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import com.google.android.material.textfield.TextInputLayout
 
-class LogInActivity : Fragment() {
+class LogInFragment : Fragment() {
     private lateinit var credentialsManager: CredentialsManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.activity_log_in, container, false)
+        val view = inflater.inflate(R.layout.fragment_log_in, container, false)
 
         credentialsManager = CredentialsManager.getInstance()
 
@@ -30,7 +30,7 @@ class LogInActivity : Fragment() {
 
         registerNow.setOnClickListener {
             Log.d("Onboarding", "Register now pressed")
-            (activity as MainActivity).replaceFragment(RegisterScreen())
+            (activity as MainActivity).replaceFragment(RegisterFragment())
         }
 
         loginButton.setOnClickListener {
@@ -70,7 +70,7 @@ class LogInActivity : Fragment() {
 
     private fun goToRecipeListFragment() {
         parentFragmentManager.commit {
-            replace(R.id.fragment_container_view, Recipe())
+            replace(R.id.fragment_container_view, RecipeFragment())
             addToBackStack(null)
         }
     }
