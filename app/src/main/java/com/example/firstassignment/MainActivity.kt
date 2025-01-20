@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            val loginFragment = LogInActivity()
+            val loginFragment = LogInFragment()
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, loginFragment)
                 .commit()
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showRecipeFragment() {
-        val recipeFragment = Recipe()
+        val recipeFragment = RecipeFragment()
         replaceFragment(recipeFragment)
     }
 }

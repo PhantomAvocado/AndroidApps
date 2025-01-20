@@ -11,14 +11,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-class RegisterScreen : Fragment() {
+class RegisterFragment : Fragment() {
     private lateinit var credentialsManager: CredentialsManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.register_screen, container, false)
+        val view = inflater.inflate(R.layout.fragment_register, container, false)
 
         credentialsManager = CredentialsManager.getInstance()
 
@@ -29,7 +29,7 @@ class RegisterScreen : Fragment() {
 
         logIn.setOnClickListener {
             Log.d("Homework", "Pressing the 'log in' text")
-            (activity as MainActivity).replaceFragment(LogInActivity())
+            (activity as MainActivity).replaceFragment(LogInFragment())
         }
 
         registerButton.setOnClickListener {
@@ -45,7 +45,7 @@ class RegisterScreen : Fragment() {
         val result = credentialsManager.register(email, password)
         if (result == "Registration successful") {
             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
-            (activity as MainActivity).replaceFragment(LogInActivity())
+            (activity as MainActivity).replaceFragment(LogInFragment())
         } else {
             Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
         }
